@@ -56,6 +56,7 @@ def get_similar_sentence_pairs(data, tree, n, threshold):
     df_sim_sents.insert(3, "text2", df_sim_sents["id2"].map(id2text))
 
     df_sim_sents.sort_values(by=["similarity", "id1", "id2"], ascending=[False, True, True], inplace=True)
+    df_sim_sents["similarity"] = df_sim_sents["similarity"].apply(lambda x: round(x, 5))
     print("Completed!")
     return df_sim_sents
 
